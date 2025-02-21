@@ -14,6 +14,10 @@ app.use(cors());
 app.use(json());
 app.use(router);
 
+app.get("/", (_req: Request, res: Response) => {
+  res.status(200).send("Backend funcionando correctamente 🚀");
+});
+
 app.use((_req: Request, res: Response) => {
   res.status(404).send("Route not found");
 });
