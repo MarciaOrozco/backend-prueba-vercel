@@ -34,4 +34,4 @@ try {
   console.error("❌ Error al iniciar el servidor:", error);
 }
 
-module.exports = app;
+export default app;
