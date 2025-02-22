@@ -1,7 +1,7 @@
 {
   "name": "mdw",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "idist/api/index.js",
   "scripts": {
     "build": "tsc",
     "vercel-build": "tsc",
