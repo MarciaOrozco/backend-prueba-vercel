@@ -1,2 +1,3 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-import "./dist/api/index.js";
+import app from "./dist/api/index.js";
+export default app;
