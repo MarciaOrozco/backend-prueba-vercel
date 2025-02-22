@@ -16,9 +16,9 @@ connectDB()
 
 app.use(cors());
 app.use(json());
-app.use("/api", router);
+app.use("/", router);
 
-app.get("/api", (_req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.status(200).send("🚀 Backend funcionando en /api/");
 });
 
