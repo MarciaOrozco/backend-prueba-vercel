@@ -1,3 +1,2 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-import app from "./dist/api/index.js";
-export default app;
+// eslint-disable-next-line @typescript-eslint/no-require-imports, no-undef, @typescript-eslint/no-unused-vars
+const app = require("./dist/api/index.js");
