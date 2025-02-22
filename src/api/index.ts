@@ -12,16 +12,23 @@ connectDB();
 
 app.use(cors());
 app.use(json());
-app.use(router);
 
-app.get("/", (_req: Request, res: Response) => {
-  res.status(200).send("Backend funcionando correctamente 🚀");
+// 🔹 Aquí modificamos el router para asegurarnos de que Express responda en /api/
+app.use("/api", router);
+
+// 🔹 Ruta de prueba en /api/ para ver si el backend está vivo
+app.get("/api", (_req: Request, res: Response) => {
+  res.status(200).send("🚀 Backend funcionando en /api/");
 });
 
+// 🔹 Ruta 404 en caso de que algo no se encuentre
 app.use((_req: Request, res: Response) => {
   res.status(404).send("Route not found");
 });
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
+});
 
+// 🔹 Esto es clave para que Vercel reconozca la API
 module.exports = app;
