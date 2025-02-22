@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "vercel-build": "tsc",
-    "start": "node dist/api/index.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
