@@ -8,27 +8,30 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
-connectDB();
+connectDB()
+  .then(() => console.log("✅ Conectado a la base de datos"))
+  .catch((err) =>
+    console.error("❌ Error al conectar a la base de datos", err)
+  );
 
 app.use(cors());
 app.use(json());
-
-// 🔹 Aquí modificamos el router para asegurarnos de que Express responda en /api/
 app.use("/api", router);
 
-// 🔹 Ruta de prueba en /api/ para ver si el backend está vivo
 app.get("/api", (_req: Request, res: Response) => {
   res.status(200).send("🚀 Backend funcionando en /api/");
 });
 
-// 🔹 Ruta 404 en caso de que algo no se encuentre
 app.use((_req: Request, res: Response) => {
   res.status(404).send("Route not found");
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
-});
+try {
+  app.listen(port, () => {
+    console.log(`🚀 Servidor corriendo en http://localhost:${port}`);
+  });
+} catch (error) {
+  console.error("❌ Error al iniciar el servidor:", error);
+}
 
-// 🔹 Esto es clave para que Vercel reconozca la API
 module.exports = app;
